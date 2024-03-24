@@ -1,0 +1,131 @@
+body{
+    font-family: Basis_Grotesque_Pro;
+}
+
+
+.foot{
+    margin-bottom: 0;
+}
+
+.mainpage{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+}
+
+@media (min-width: 961px){
+.main-container{
+    margin-left: calc(10% + 36px);
+    margin-right: calc(10% + 36px);
+}
+}
+
+.borderClass {
+    border-bottom: 0.5px solid #d3d3d3;
+    height: 0.5px;
+    margin: 20px 0;
+}
+
+@media (min-width: 768px){
+.header-margin {
+    margin-right: 18px;
+}}
+
+.restaurant{
+    max-width: 800px;
+    min-height: 800px;
+    margin: 20px auto 0;
+}
+
+.restaurant-header{
+padding: 10px;
+}
+
+.restaurant-header-wrapper{
+    margin: 25px;
+    display: flex;
+justify-content:space-between;
+}
+.rating{
+    width: 15%;
+}
+.hotel-header{
+    width: 75%;
+}
+.hotel-desc{
+    font-size: .93rem;
+    margin-bottom: 2px;
+}
+.menuitem{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuitem-desc{
+    width: 80%;
+}
+
+.menuitem-image{
+    width: 15%;
+}
+
+.menuitem-image{
+    width: 118px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.menuitem-button{
+    color: #60b246;
+    cursor: pointer;
+    width: 98px !important;
+    height: 36px !important;
+    text-align: center;
+    margin: auto;
+}
+
+.RestaurantLicence_image{
+    height: 30px;
+    width: 60px;
+    margin-right: 16px 
+}
+
+.RestaurantLicence_licenceText{   
+    padding-top: 6px;
+}
+.RestaurantLicence_licence{
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.searchbar{
+    position: sticky;
+width: 100%;
+left: 0;
+top: 80px;
+z-index: 2;
+background-color: #fff;
+padding-bottom: 8px;
+padding-top: 48px;
+}
+.searchForm{display: flex;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    padding-right: 13px;
+    justify-content: center;
+}
+.list{
+        padding: 25px 20px; 
+        margin-left: 15px; 
+        cursor: pointer; 
+        display: flex; 
+        align-items: center;
+        position: relative; 
+        list-style-type: none;
+      }
