@@ -106,13 +106,23 @@ const CartItem = ({ item, cartItems }) => {
                         ${menuItem.menuItemPrice}
                     </span>
                 </div>
-                <div>
+                <div style={{ display: "flex", alignItems: "center" }}>
                     <button
                         className="btn btn-sm btn-info"
                         style={{
                             fontSize: "1.5rem",
-                            width: "35px",
-                            marginRight: "10px",
+                            width: "25px",
+                            height: "35px",
+                            margin: "0 10px 0 10px",
+                            backgroundColor: "#28a745",
+                            color: "#fff",
+                            border: "none",
+                            borderRadius: "5px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            cursor: "pointer",
+                            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                         }}
                         onClick={() =>
                             handleSubtract()
@@ -125,8 +135,18 @@ const CartItem = ({ item, cartItems }) => {
                         className="btn btn-sm btn-info"
                         style={{
                             fontSize: "1.5rem",
-                            width: "35px",
-                            marginLeft: "10px",
+                            width: "25px",
+                            height: "35px",
+                            margin: "0 0 0 10px",
+                            backgroundColor: "#28a745",
+                            color: "#fff",
+                            border: "none",
+                            borderRadius: "5px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            cursor: "pointer",
+                            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                         }}
                         onClick={() =>
                             handleAdd()

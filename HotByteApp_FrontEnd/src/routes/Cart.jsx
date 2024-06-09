@@ -95,154 +95,162 @@ const Cart = () => {
   }
   return (
     <div>
-          {Object.keys(cartItem).length !== 0 ? (
-            <Container>
-              <Row className="mb-4">
-                
-                <Col xs={12}>
-                  <Link to="/">
-                    <img
-                      src={LOGO}
-                      alt="Your Logo"
-                      className="img-fluid"
-                      style={{ height: "100px" }}
-                    />
-                  </Link>
-                </Col>
-              </Row>
+      {Object.keys(cartItem).length !== 0 ? (
+  <Container>
+    <Row className="mb-4">
+      <Col xs={12}>
+        <Link to="/">
+          <img
+            src={LOGO}
+            alt="Your Logo"
+            className="img-fluid"
+            style={{ height: "100px" }}
+          />
+        </Link>
+      </Col>
+    </Row>
 
-              <h2 className="my-4">Checkout</h2>
+    <h2 className="my-4">Checkout</h2>
 
-              <Row style={{ border: "2px solid #843de6" }}>
-                <Col md={6} style={{ borderRight: "3px solid #843de6" }}>
-                  <h4>Shipping Information</h4>
-                  <div>
-                    <p>
-                      <strong>Name:</strong> {realUser.username}
-                    </p>
-                    <p>
-                      <strong>Address:</strong> {{ ...realUser.address }.street2}
-                    </p>
-                    <p>
-                      <strong>LandMark:</strong> {{ ...realUser.address }.landmark}
-                    </p>
-                    <p>
-                      <strong>City:</strong> {{ ...realUser.address }.city}
-                    </p>
+    <Row style={{ border: "none", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px" }}>
+    <Col md={6} style={{ borderRight: "3px solid #843de6", padding: "0 20px" }}>
+  <h4 style={{ marginBottom: "20px", color: "#843de6" }}>Shipping Information</h4>
+  <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "10px", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}>
+    <p style={{ marginBottom: "10px" }}>
+      <strong>Name:</strong> {realUser.username}
+    </p>
+    <p style={{ marginBottom: "10px" }}>
+      <strong>Address:</strong> {{ ...realUser.address }.street2}
+    </p>
+    <p style={{ marginBottom: "10px" }}>
+      <strong>Landmark:</strong> {{ ...realUser.address }.landmark}
+    </p>
+    <p style={{ marginBottom: "10px" }}>
+      <strong>City:</strong> {{ ...realUser.address }.city}
+    </p>
+    {/* Display more address details as needed */}
+  </div>
+</Col>
 
-                    {/* Display more address details as needed */}
-                  </div>
-                </Col>
 
-                <Col md={6}>
-                  <h4>Order Summary</h4>
-                  <ul className="list-group">
-                    {keys.map((item) => (
-                      <CartItem item={item} cartItems={cartItems} />
-                    ))}
-                    {/* Delivery Fee row */}
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      <div>Delivery Fee</div>
-                      <div>
-                        $ 70
-                      </div>
-                    </li>
-                  </ul>
+<Col md={6}>
+  <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "10px", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}>
+    <h4 style={{ marginBottom: "20px", color: "#843de6" }}>Order Summary</h4>
+    <ul className="list-group">
+      {keys.map((item) => (
+        <CartItem item={item} cartItems={cartItems} />
+      ))}
+      {/* Delivery Fee row */}
+      <li className="list-group-item d-flex justify-content-between align-items-center" style={{ backgroundColor: "#e9ecef", marginBottom: "10px", borderRadius: "5px" }}>
+        <div>Delivery Fee</div>
+        <div>$70</div>
+      </li>
+    </ul>
 
-                  <div className="mt-3">
-                    <h5>Total: ₹{realUser.cartTotal}</h5>
-                  </div>
+    <div className="mt-3">
+      <h5>Total: ₹{realUser.cartTotal}</h5>
+    </div>
 
-                  <button className="btn btn-outline-primary"><Link to={`/restaurants/${hotelCartID}`} style={{textDecoration:"none"}}>Add More items</Link></button>
-                  <div class="form-group" style={{ margin: "20px" }}>
-                    <label for="note">Note:</label>
-                    <input type="text" class="form-control" id="note" placeholder="Enter your note here..." onChange={(e)=>{setNote(e.target.value)}}/>
-                  </div>
-                  <div
-                    style={{
-                      margin: "30px 0 ",
-                      padding: "10px 20px",
-                      backgroundColor: "#fc8019",
-                      fontWeight: "600",
-                      cursor: "pointer",
-                      fontSize: "15px",
-                      width: "25%"
-                    }}
-                    onClick={placeOrder}
-                  >
-                      PLACE ORDER
-                    
-                  </div>
+    <button className="btn btn-outline-primary" style={{ marginTop: "20px", marginRight: "10px", borderRadius: "5px", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}>
+      <Link to={`/restaurants/${hotelCartID}`} style={{ textDecoration: "none", color: "#007bff" }}>
+        Add More Items
+      </Link>
+    </button>
 
-                </Col>
-              </Row>
-            </Container>
-          ) : (
-            <div className="cart">
-              <div className="empty-cart">
-                <div
-                  style={{
-                    height: "calc(100vh - 80px)",
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    background: "#fff",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "290px",
-                      height: "256px",
-                      backgroundImage:
-                        "url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0)",
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                    }}
-                  ></div>
+    <div className="form-group mt-3">
+      <label htmlFor="note" style={{ fontWeight: "bold", color: "#343a40" }}>Note:</label>
+      <input type="text" className="form-control" id="note" placeholder="Enter your note here..." onChange={(e) => { setNote(e.target.value) }} style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }} />
+    </div>
 
-                  <div
-                    style={{
-                      marginTop: "24px",
-                      fontSize: "20px",
-                      fontWeight: "600",
-                      color: "#535665",
-                    }}
-                  >
-                    Your cart is empty
-                  </div>
+    <div
+      className="btn btn-primary"
+      style={{
+        padding: "10px 20px",
+        fontWeight: "600",
+        cursor: "pointer",
+        fontSize: "15px",
+        borderRadius: "5px",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+        backgroundColor: "#fc8019",
+        color: "#fff",
+      }}
+      onClick={placeOrder}
+    >
+      PLACE ORDER
+    </div>
+  </div>
+</Col>
 
-                  <div
-                    style={{
-                      marginTop: "9px",
-                      color: "#7e808c",
-                    }}
-                  >
-                    You can go to home page to view more restaurants
-                  </div>
+    </Row>
+  </Container>
+) : (
+    <div className="cart">
+      <div className="empty-cart">
+        <div
+          style={{
+            height: "calc(100vh - 80px)",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            justifyContent: "center",
+            background: "#fff",
+          }}
+        >
+          <div
+            style={{
+              width: "290px",
+              height: "256px",
+              backgroundImage:
+                "url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0)",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+          ></div>
 
-                  <div
-                    style={{
-                      marginTop: "30px",
-                      padding: "10px 20px",
-                      backgroundColor: "#fc8019",
-                      color: "#fff",
-                      fontWeight: "600",
-                      cursor: "pointer",
-                      fontSize: "15px",
-                    }}
-                  >
-                    <Link to="/" style={{ textDecoration: "none", color: "#ffffff" }}>
-                      SEE RESTAURANTS NEAR YOU
-                    </Link>
-                  </div>
+          <div
+            style={{
+              marginTop: "24px",
+              fontSize: "20px",
+              fontWeight: "600",
+              color: "#535665",
+            }}
+          >
+            Your cart is empty
+          </div>
 
-                </div>
-              </div>
-            </div>
-          )
-          }
+          <div
+            style={{
+              marginTop: "9px",
+              color: "#7e808c",
+            }}
+          >
+            You can go to the home page to view more restaurants
+          </div>
+
+          <div
+            style={{
+              marginTop: "30px",
+              padding: "10px 20px",
+              backgroundColor: "#fc8019",
+              color: "#fff",
+              fontWeight: "600",
+              cursor: "pointer",
+              fontSize: "15px",
+              borderRadius: "5px",
+              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <Link to="/" style={{ textDecoration: "none", color: "#ffffff" }}>
+              SEE RESTAURANTS NEAR YOU
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
         
     </div>
   );

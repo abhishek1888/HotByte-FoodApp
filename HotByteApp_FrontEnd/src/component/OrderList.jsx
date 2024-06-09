@@ -28,9 +28,29 @@ const OrderList = () => {
   },[])
   return (
     <div style={{width:"100%"}}>
-         {orders.map((order)=>(
-           <OrderItem order={order}/>
-         ))}
+         {
+              orders.length===0?(
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '100vh',
+                  color: '#843de6',
+                  fontSize: '25px',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  border:"5px solid black"
+                }}>
+                    <p>No Orders </p>
+                    <img src="https://cdn2.iconfinder.com/data/icons/food-delivery-wildberry-vol-2/256/Not_Taking_Orders-512.png" alt="No orders" style={{ width: '500px', marginTop: '20px' }} />
+                </div>
+              ):(
+                orders.map((order)=>(
+                    <OrderItem order={order}/>
+              ))
+            )
+         }
     </div>
   )
 }

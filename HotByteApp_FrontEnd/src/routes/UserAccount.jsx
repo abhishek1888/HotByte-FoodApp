@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { IoSettings } from "react-icons/io5";
 import { MdOutlineMyLocation } from "react-icons/md";
 import { MdPayment } from "react-icons/md";
@@ -7,127 +7,95 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/userRedux';
-import {logout as realLogout} from '../store/realUserRedux';
-export const UserAccount = () => {
- const dispatch=useDispatch()
- const navigate=useNavigate()
- const realUser = useSelector((state) => state.realUser.currentRealUser)
- const handlelogout=()=>{
-       dispatch(logout());
-       dispatch(realLogout());
-       navigate("/");
-  }
-  return (
-    <div>
-           <div>
-                <div  style={{
-                    position: 'relative', padding: '0 20px',
-                    background: '#37718e',
-                    minHeight: '100vh'
-                }}>
-                    <div  style={{
-                        paddingTop: '33px',
-                        maxWidth: '1200px',
-                        minWidth: '1200px',
-                        margin: '0 auto'
-                    }}>
-                        <div  style={{
-                            color: '#fff',
-                            marginBottom: '37px',
-                            marginTop: '37px',
-                            position: 'relative'
-                        }}>
-                            
-                             <div
-                             onClick={handlelogout}
-                             style={{
-                                float: 'right',
-                                position: 'absolute',
-                                bottom: '7px',
-                                right: '0',
-                                border: '1px solid hsla(0, 0%, 100%, .6)',
-                                padding: '12px 20px',
-                                textTransform: 'uppercase',
-                                display: 'inline-block',
-                                fontSize: '14px',
-                                fontWeight: 600,
-                                cursor: 'pointer'
-                            }}>LogOut</div>
-                            <div  style={{
-                                fontSize: '32px',
-                                fontWeight: '600',
-                                textTransform: 'capitalize'
-                            }}>{realUser.username}</div>
-                            <div  style={{
-                                marginTop: '2px',
-                                fontSize: '16px'
-                            }}>
-                                <span>{realUser.userContactNumber}</span>
-                                <span  style={{ marginLeft: '15px' }} >{realUser.email}</span>
-                            </div>
-                            <div>
-                                <button><Link to="/" style={{textDecoration:"none", color:"black"}}>Back to mainPage</Link></button>
-                             </div>
-                        </div>
-                    </div>
-                    <div  style={{
-                        background: '#fff',
-                        contain: 'layout',
-                        boxShadow: '0 2px 15px 0 rgba(0,0,0,.15)',
-                        width: '1300px',
-                        margin: '0 auto',
-                        position: 'relative'
-                    }}>
-                        <div ></div>
-                        <div  style={{
-                            maxWidth: '1200px',
-                            minWidth: '1200px',
-                            position: 'relative',
-                            margin: '0 auto',
-                            contain: 'layout',
-                            paddingTop: '50px',
-                            paddingBottom: '50px'
-                        }}>
-                            <div  style={{ display: "flex" }}>
-                                <div  style={{
-                                    minWidth: '260px',
-                                    background: '#edf1f7',
-                                    minHeight:"500px"
-                                }}>
-                                    <ul>
-                                        <Link to="orders" style={{textDecoration:"none",color:"black"}}>
-                                        <li className="list">
-                                            <TbMenuOrder style={{ marginRight: '10px' }}/>
-                                            <span >Orders</span>
-                                        </li>
-                                        </Link>
-                                        <Link to="Addresses" style={{textDecoration:"none",color:"black"}}>
-                                        <li className="list">
-                                           
-                                            <MdOutlineMyLocation style={{ marginRight: '10px' }}/>
-                                            <span >Addresses</span>
-                                        </li>
-                                        </Link>
-                                        <Link to="Update_Profile" style={{textDecoration:"none",color:"black"}}>
-                                        <li className="list">
-                                          
-                                            <IoSettings style={{ marginRight: '10px' }}/>
-                                            <span >Update Profile</span>
-                                        </li>
-                                        </Link>
-                                    </ul>
-                                     
-                                </div>
-                                <Outlet/>
-                                
-                            </div>
-                        </div>
-                        <div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+import { logout as realLogout } from '../store/realUserRedux';
 
+export const UserAccount = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const realUser = useSelector((state) => state.realUser.currentRealUser);
+  
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(realLogout());
+    navigate("/");
+  }
+
+  return (
+    <div style={{ background: '#f4f4f4', minHeight: '100vh' }}>
+      <div style={{ padding: '0 20px' }}>
+        <div style={{ padding: '20px', background: '#2C3E50', color: '#ECF0F1', borderRadius: '10px', margin: '20px 0' }}>
+          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+            <button
+              onClick={handleLogout}
+              style={{
+                backgroundColor: '#E74C3C',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '5px',
+                padding: '10px 20px',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                fontSize: '1em',
+                float: 'right',
+              }}
+            >
+              Log Out
+            </button>
+            <div style={{ fontSize: '2em', fontWeight: '600' }}>{realUser.username}</div>
+            <div style={{ marginTop: '5px', fontSize: '1em' }}>
+              <span>{realUser.userContactNumber}</span>
+              <span style={{ marginLeft: '15px' }}>{realUser.email}</span>
+            </div>
+            <div style={{ marginTop: '10px' }}>
+              <Link to="/" style={{ textDecoration: 'none', color: '#2C3E50' }}>
+                <button
+                  style={{
+                    backgroundColor: '#F39C12',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '5px',
+                    padding: '10px 20px',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
+                    fontSize: '1em',
+                  }}
+                >
+                  Back to Main Page
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div style={{ background: '#fff', borderRadius: '10px', boxShadow: '0 2px 15px rgba(0, 0, 0, 0.1)', padding: '20px' }}>
+          <div style={{ display: 'flex' }}>
+            <div style={{ minWidth: '260px', background: '#ECF0F1', padding: '20px', borderRadius: '10px 0 0 10px' }}>
+              <ul style={{ listStyleType: 'none', padding: '0' }}>
+                <li style={{ marginBottom: '15px' }}>
+                  <Link to="orders" style={{ textDecoration: 'none', color: '#2C3E50', display: 'flex', alignItems: 'center' }}>
+                    <TbMenuOrder style={{ marginRight: '10px' }} />
+                    <span>Orders</span>
+                  </Link>
+                </li>
+                <li style={{ marginBottom: '15px' }}>
+                  <Link to="addresses" style={{ textDecoration: 'none', color: '#2C3E50', display: 'flex', alignItems: 'center' }}>
+                    <MdOutlineMyLocation style={{ marginRight: '10px' }} />
+                    <span>Addresses</span>
+                  </Link>
+                </li>
+                <li style={{ marginBottom: '15px' }}>
+                  <Link to="update_profile" style={{ textDecoration: 'none', color: '#2C3E50', display: 'flex', alignItems: 'center' }}>
+                    <IoSettings style={{ marginRight: '10px' }} />
+                    <span>Update Profile</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div style={{ flexGrow: 1, padding: '20px' }}>
+              <Outlet />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }

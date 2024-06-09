@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
+import { FaArrowLeft } from 'react-icons/fa';
 import Header from "./Header";
 import axios from "axios";
 import HotelCard from "./HotelCard";
+import {Link} from 'react-router-dom';
 const Search = () => {
   const [searchHotelList, setSearchHotelList] = useState([])
   const [searchQuery, setSearchQuery] = useState('');
@@ -36,7 +38,13 @@ const Search = () => {
       <div class="searchbar">
         <div style={{ width: "860px", margin: " 0 auto 8px" }}>
           <form onSubmit={handleSubmit}>
+           
             <div class="searchForm">
+            <Link to="/">
+              <div style={{margin:'0 0 0 10px',color:"black"}}>
+                < FaArrowLeft size={30}/>
+              </div>
+              </Link>
               <div style={{ flex: "1" }}>
                 <input
                   type="text"

@@ -32,7 +32,7 @@ const AdminViewUser = () => {
   return (
     <div className="main-container">
       
-      <div className="row row-cols-lg-3 row-cols-xxl-4 row-cols-sm-2 row-cols-1 mb-5" style={{ gap: "30px" }}>
+      <div className="row row-cols-lg-3 row-cols-xxl-4 row-cols-sm-2 row-cols-1 mb-5" style={{ gap: "50px" }}>
            {
              users.map((user)=>(
               <UserCard {...user} key={user.userId}/>

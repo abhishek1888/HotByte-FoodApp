@@ -1,6 +1,8 @@
 import React from "react";
 import User from "../../public/User.jpeg";
+import user_female from "../../public/user_female.jpeg";
 const UserCard = (props) => {
+  const user=props.userGender=="male"?User:user_female;
   return (
     <div className="col-xxl-3 col-lg-4 col-sm-6 mb-4">
         <div
@@ -14,7 +16,7 @@ const UserCard = (props) => {
           }}
         >
           <img
-            src={User}
+            src={user}
             class="card-img-top"
             alt="..."
             height="182"
