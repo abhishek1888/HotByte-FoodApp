@@ -27,6 +27,8 @@ import AdminViewUser from "./component/AdminViewUser";
 import UserProfileUpdate from "./component/UserProfileUpdate";
 import { HelpandSupport } from "./component/HelpandSupport";
 import { InvalidPage } from "./component/InvalidPage";
+import ProtectedRoute from './ProtectedRoute';
+import Unauthorized from "./component/Unauthorized";
 
 const router = createBrowserRouter([
   {
@@ -64,7 +66,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <RestaurantDashboard />,
+    element: <ProtectedRoute element={RestaurantDashboard} allowedRoles={['ROLE_HOTEL']} />,
     children: [
       {
         path: "",
@@ -86,7 +88,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminDashboard />,
+    element: <ProtectedRoute element={AdminDashboard} allowedRoles={['ROLE_ADMIN']} />,
     children: [
       {
         path: "",
@@ -109,7 +111,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/account",
-    element: <UserAccount/>,
+    element: <ProtectedRoute element={UserAccount} allowedRoles={['ROLE_USER']} />,
     children: [
       {
         path: "orders",
@@ -129,6 +131,10 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <InvalidPage/>,
+  },
+  {
+    path: "/unauthorized",
+    element: <Unauthorized/>,
   },
 ]);
 
